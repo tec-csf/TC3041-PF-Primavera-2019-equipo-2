@@ -1,12 +1,12 @@
-from flask import Flask,jsonify,request,make_response,redirect,url_for,render_template
+from flask import Flask,jsonify,request,make_response,redirect,url_for,render_template, session
 from flask_bootstrap import Bootstrap
-from flask import Flask, session
-import jinja2
 from backend import api
+import jinja2
 import os
 env = jinja2.Environment()
 env.globals.update(zip=zip)
 SECRET_KEY = os.urandom(32)
+id = 9
 
 
 app = Flask(__name__)
@@ -25,7 +25,7 @@ def root():
         person['_id'] = str(person['_id'])
         result.append(person)
 
-    return jsonify(result)
+    return #jsonify(result)
 
 @app.route('/test', methods=['POST','GET'])
 def test():
@@ -37,74 +37,76 @@ def login():
     a = api.API()
     if request.method == 'POST':
 
-        user = request.form.get('username')
+        user = request.form.get('email')
 
         password = request.form.get('pass')
 
         if(a.verify_password(user,password)):
-             session['user'] = user
-             return redirect(url_for('menu'))
+             user['_id'] = user
+             return redirect(url_for('index'))
         else:
-            print("incorrecto")
+            print("wrong")
 
     return render_template('login.html')
 
-@app.route('/registro', methods=['POST','GET'])
+@app.route('/register', methods=['POST','GET'])
 def registro():
 
     a = api.API()
     if request.method == 'POST':
 
-        user = request.form.get('username')
+        user = request.form.get('email')
         print("agap",user)
+        name = request.form.get('name')
+        print("agap",name)
+        comp = request.form.get('comp')
+        print("agap",comp)
+        age = request.form.get('age')
+        print("agap",age)
+        phone = request.form.get('phone')
+        print("agap",phone)
         password = request.form.get('password')
         print("agap",password)
-        name = request.form.get('Name')
-        print("agap",name)
-        lastName = request.form.get('Lastname')
-        print("agap",lastName)
-        email = request.form.get('Email')
-        print("agap",email)
 
-        a.insert_user(user,password,name,lastName,email)
+        id = id + 1
+        a.insert_user(id,email,name,company,age,phone)
 
         return redirect(url_for('login'))
 
-    return render_template('registro.html')
+    return render_template('register.html')
 
 
-
-@app.route('/menu', methods=['GET','POST'])
-def menu():
-    user = session.get('user')
+'''
+@app.route('/index', methods=['GET','POST'])
+def index():
+    user = session.get('email')
     user = str(user)
     #print(user)
-    libros_array = []
-    ids_libros_array = []
-    titulos_array = []
-    imagenes_array =[]
-    autor_array =[]
-    genero_array=[]
-    fecha_de_publicacion_array=[]
-    descripcion_array=[]
-    num_paginas_array=[]
-    editorial_array=[]
-    pais_array=[]
+    #libros_array = []
+    #ids_libros_array = []
+    #titulos_array = []
+    #imagenes_array =[]
+    #autor_array =[]
+    #genero_array=[]
+    #fecha_de_publicacion_array=[]
+    #descripcion_array=[]
+    #num_paginas_array=[]
+    #editorial_array=[]
+    #pais_array=[]
 
     jsons = api.API()
     usuarios_array = jsons.get_all_users()
-    libros = jsons.get_user_books(user)
-    print("agap",libros)
-    libros_usuario =libros['libros']
+    #libros = jsons.get_user_books(user)
+    #print("agap",libros)
+    #libros_usuario =libros['libros']
     """
     if libros['libros'] == NoneType:
         libros_usuario =[]
     else:
         libros_usuario = libros['libros']
         """
-
-
-
+'''
+'''
     if request.form.get("filt"):
         filtro = request.form.get("filt")
         bandera = 1
@@ -115,6 +117,7 @@ def menu():
         bandera = 0
         filtro = 'None'
     bandera = str(bandera)
+
     #print("browser",filtro,bandera)
 
     anadir = request.form.get("anadir")
@@ -157,15 +160,8 @@ def menu():
 
 
 
-    return render_template('index.html',autores= autor_array, libros=libros_array,titulos=titulos_array,
-                            imagenes=imagenes_array, generos=genero_array,
-                            fechas=fecha_de_publicacion_array,descripciones=descripcion_array,
-                            num_paginas=num_paginas_array,editoriales = editorial_array,
-                            paises=pais_array,filtro = filtro,usuarios=usuarios_array,
-                            generoslimpios=generos_limpios,autoreslimpios=autores_limpios,bandera=bandera,idlibros = ids_libros_array,
-                            libros_usuario = libros_usuario, datosUsuario = libros)
-
-
+  return render_template('index.html')
+'''
 
 if __name__ == "__main__":
     app.run(debug=True)
