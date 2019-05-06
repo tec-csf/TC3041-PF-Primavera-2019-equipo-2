@@ -35,7 +35,7 @@ class Persons(object):
         """
         Desplegar toda tu informacion
         """
-        pipe = [{"$match":{"name":name}}]
+        pipe = [{"$match":{"email":name}}]
 
         usuario = self.collection.aggregate(pipe)
         result = list(usuario)

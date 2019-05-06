@@ -24,15 +24,19 @@ def test():
 @app.route('/login', methods=['POST','GET'])
 def login():
 
+    p = persons.Persons()
     if request.method == 'POST':
 
-        user = request.form.get('email')
+        user = request.form.get('name')
 
         password = request.form.get('pass')
 
         #if(a.verify_password(user,password)):
             # user['_id'] = user
-        return redirect(url_for('index'))
+
+        cursor = p.findFriends(1)#(user)
+        knows = list(cursor)
+        return render_template("index.html",knows=knows)
         #else:
             #print("wrong")
 
@@ -40,11 +44,24 @@ def login():
 
 @app.route('/index', methods=['POST','GET'])
 def index():
+    p = persons.Persons()
+
+    if request.method == 'POST':
+
+        search = request.form.get('search')
+        print("agap", search)
+
+        cursor = findWhere(search)
+        searched = list(cursor)
+
+        return render_template("index.html",searched=searched)
+
     return render_template("index.html")
 
 @app.route('/register', methods=['POST','GET'])
 def registro():
 
+    p = persons.Persons()
     if request.method == 'POST':
 
         user = request.form.get('email')
@@ -61,9 +78,9 @@ def registro():
         print("agap",password)
 
         id = id + 1
-        #a.insert_user(id,email,name,company,age,phone)
-
-        return redirect(url_for('index'))
+        p.insert_user(id,email,name,company,age,phone)
+        #s.inser_pass(email,password)
+        return redirect(url_for('login'))
 
     return render_template('register.html')
 

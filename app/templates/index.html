@@ -48,7 +48,21 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script>
+	function fillDetails(person)
+    {
+      htmlDetails =  `
+        <br>
+        <li>Name: ${person.name}</li>
+        <li>Email: ${person.email}</li>
+        <li>Phone: ${person.phone}</li>
+        <li>Age: ${person.age}</li>
+      `;
+      document.getElementById("detail-list").innerHTML = htmlDetails;
+      return;
+    }
 
+	</script>
 	</head>
 	<body>
 	<div id="colorlib-page">
@@ -93,10 +107,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 							<div class="fancy-collapse-panel">
 								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+ 									{% for i in knows %}
+
 									<div class="panel panel-default">
 									    <div class="panel-heading" role="tab" id="headingOne">
 									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Manuel
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ i.nombre }}
 									            </a>
 									        </h4>
 									    </div>
@@ -104,117 +121,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									         <div class="panel-body">
 									            <div class="row">
 										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingTwo">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria- rols="collapseTwo" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingThree">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
+																<li class="selectable-item" onclick='fillDetails({{ i|tojson }})'>
+									 									<p>{{ i.nombre }}</p>
+								 								</li>
 										      		</div>
 										      	</div>
 									         </div>
 									    </div>
 									</div>
 
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingFour">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
+									{% endfor %}
 
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingFive">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -247,8 +164,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										</div>
 									</form>
 								</div>
-
 							</div>
+							{% for i in searched %}
+
+							<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="headingOne">
+											<h4 class="panel-title">
+													<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ i.nombre }}
+													</a>
+											</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+											 <div class="panel-body">
+													<div class="row">
+													<div class="col-md-6">
+														<p>fillDetails({{ i|tojson }})></p>
+													</div>
+												</div>
+											 </div>
+									</div>
+							</div>
+
+							{% endfor %}
 						</div>
 					</div>
 				</div>
