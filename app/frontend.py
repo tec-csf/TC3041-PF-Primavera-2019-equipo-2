@@ -12,7 +12,14 @@ id = 9
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 Bootstrap(app)
-app.jinja_env.filters['zip'] = zip
+app.jinj
+        id = id + 1
+        #a.insert_user(id,email,name,company,age,phone)
+
+        return redirect(url_for('login'))
+
+    return render_template('templates/register.html')
+a_env.filters['zip'] = zip
 
 
 @app.route('/', methods=['GET','POST'])
@@ -42,11 +49,11 @@ def login():
 
         #if(a.verify_password(user,password)):
             # user['_id'] = user
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))
         #else:
             #print("wrong")
 
-    return render_template('login.html')
+    return render_template('templates/login.html')
 
 @app.route('/register', methods=['POST','GET'])
 def registro():
@@ -71,7 +78,7 @@ def registro():
 
         return redirect(url_for('login'))
 
-    return render_template('register.html')
+    return render_template('templates/register.html')
 
 
 if __name__ == "__main__":

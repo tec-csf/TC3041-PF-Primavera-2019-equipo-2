@@ -61,12 +61,12 @@ class Persons(object):
         """
         Despliega a tus conocidos
         """
-        friends = [{$match:{ 'name': {} }}, {$project:{'_id':0, 'knows':1}}]);
+        #friends = [{$match:{ 'name': {} }}, {$project:{'_id':0, 'knows':1}}]);
         #QUERY NO TERMINADO
 
-        usuario = self.collection.aggregate(friends)
+        usuario = self.collection.find()
 
-        if usuario is not None:
-            usuario['_id'] = str(usuario['_id'])
+        #if usuario is not None:
+            #usuario['_id'] = str(usuario['_id'])
 
         return usuario
