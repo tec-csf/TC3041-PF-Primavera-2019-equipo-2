@@ -31,42 +31,39 @@ class Persons(object):
 
         return usuarios
 
-    def findOne(self, email):
+    def findOne(self, name):
         """
         Desplegar toda tu informacion
         """
-        usuario = self.collection.find({'email': email})
+        pipe = [{"$match":{"name":name}}]
 
-        if usuario is not None:
-            usuario['_id'] = str(usuario['_id'])
-
-        return usuario
+        usuario = self.collection.aggregate(pipe)
+        result = list(usuario)
+        return result
 
     def findWhere(self, name):
         """
         Buscar personas que tengan la letra K en su nombre
         """
-        where = "/{}/".format(name)
+        where = "{}".format(name)
+        pipe = [{"$match":{"name":{ "$regex": where }}}]
 
-        usuario = self.collection.find({'name': where})
-        usuarios = []
+        cursor = self.collection.aggregate(pipe)
+        result = list(cursor)
+        return result
 
-        if usuario is not None:
-            usuario['_id'] = str(usuario['_id'])
-            usuarios.append(usuario)
-
-        return usuarios
 
     def findFriends(self, name):
         """
         Despliega a tus conocidos
         """
-        #friends = [{$match:{ 'name': {} }}, {$project:{'_id':0, 'knows':1}}]);
-        #QUERY NO TERMINADO
-
-        usuario = self.collection.find()
-
-        #if usuario is not None:
-            #usuario['_id'] = str(usuario['_id'])
-
-        return usuario
+        cursor = self.collection.distinct("knows", {"_id":name})
+        result2 = list(cursor)
+        temp = result2[0]
+        k = []
+        for i in range(len(temp)):
+            if i%2 == 1:
+                temp2 = temp[i]
+                result3 = list(self.collection.find({"_id":int(temp2)}))
+                k.append(result3)
+        return k
