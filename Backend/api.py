@@ -12,7 +12,7 @@ from datetime import datetime
 
 
 class LoginForm(Form):
-    username = StringField('username', validators=[InputRequired(),Email(message='Invalid email.')])
+    username = StringField('email', validators=[InputRequired(),Email(message='Invalid email.')])
     password = PasswordField('password', validators=[InputRequired(),Length(min=5,max=15)])
 
 class API(object):
@@ -46,12 +46,12 @@ class API(object):
 
 
 #view queries
-    def get_all_tasks(self):
+    def get_all_users(self):
         mongodb = user.Users()
         person = mongodb.find()
 
-        return libs
-
+        return person
+'''
     def get_all_tasks_by_genre(self):
         mongodb = libros.Libros()
         libs = mongodb.findByGenre()
@@ -64,12 +64,6 @@ class API(object):
 
         return libs
 
-    def get_all_users(self):
-        mongodb = usuarios.Usuarios()
-        users = mongodb.find()
-
-        return users
-
     def get_user_books(self,user):
         mongodb = usuarios.Usuarios()
         libs = mongodb.findOne(user)
@@ -78,3 +72,4 @@ class API(object):
     def send_book(self,id,libro):
         mongodb = usuarios.Usuarios()
         mongodb.add_book(id,libro)
+'''
