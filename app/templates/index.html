@@ -21,7 +21,7 @@
 	<meta name="twitter:card" content="" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="shortcut icon" href="static/images/icon/favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
@@ -35,7 +35,7 @@
 	<!-- Flexslider  -->
 	<link rel="stylesheet" href="static/css/flexslider.css">
 	<!-- Flaticons  -->
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="static/fonts/flaticon/font/flaticon.css">
 	<!-- Owl Carousel -->
 	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
@@ -43,26 +43,12 @@
 	<link rel="stylesheet" href="static/css/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="static/js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-	<script>
-	function fillDetails(person)
-    {
-      htmlDetails =  `
-        <br>
-        <li>Name: ${person.name}</li>
-        <li>Email: ${person.email}</li>
-        <li>Phone: ${person.phone}</li>
-        <li>Age: ${person.age}</li>
-      `;
-      document.getElementById("detail-list").innerHTML = htmlDetails;
-      return;
-    }
 
-	</script>
 	</head>
 	<body>
 	<div id="colorlib-page">
@@ -70,7 +56,7 @@
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
 			<div class="text-center">
-				<div class="author-img" style="background-image: url(images/bg-01.jpg);"></div>
+				<div class="author-img" style="background-image: url(static/images/bg-01.jpg);"></div>
 				<h1 id="colorlib-logo"><a href="index.html">Pablo Teran</a></h1>
 				<span class="position">Aqui va toda la informacion</span>
 			</div>
@@ -107,13 +93,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 							<div class="fancy-collapse-panel">
 								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
- 									{% for i in knows %}
-
 									<div class="panel panel-default">
 									    <div class="panel-heading" role="tab" id="headingOne">
 									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ i.nombre }}
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Manuel
 									            </a>
 									        </h4>
 									    </div>
@@ -121,17 +104,117 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									         <div class="panel-body">
 									            <div class="row">
 										      		<div class="col-md-6">
-																<li class="selectable-item" onclick='fillDetails({{ i|tojson }})'>
-									 									
-								 								</li>
+										      			<p>Aqui va la info de Manuel </p>
+																<p>email</p>
+																<p>phone</p>
+										      		</div>
+										      		<div class="col-md-6">
+										      			<p>Se divide en 2 columnas</p>
+																<p>age</p>
+																<p>company</p>
+										      		</div>
+										      	</div>
+									         </div>
+									    </div>
+									</div>
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingTwo">
+									        <h4 class="panel-title">
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria- rols="collapseTwo" class="collapsed">Manuel
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+									         <div class="panel-body">
+									            <div class="row">
+										      		<div class="col-md-6">
+										      			<p>Aqui va la info de Manuel </p>
+																<p>email</p>
+																<p>phone</p>
+										      		</div>
+										      		<div class="col-md-6">
+										      			<p>Se divide en 2 columnas</p>
+																<p>age</p>
+																<p>company</p>
+										      		</div>
+										      	</div>
+									         </div>
+									    </div>
+									</div>
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingThree">
+									        <h4 class="panel-title">
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Manuel
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+									         <div class="panel-body">
+									            <div class="row">
+										      		<div class="col-md-6">
+										      			<p>Aqui va la info de Manuel </p>
+																<p>email</p>
+																<p>phone</p>
+										      		</div>
+										      		<div class="col-md-6">
+										      			<p>Se divide en 2 columnas</p>
+																<p>age</p>
+																<p>company</p>
 										      		</div>
 										      	</div>
 									         </div>
 									    </div>
 									</div>
 
-									{% endfor %}
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingFour">
+									        <h4 class="panel-title">
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="collapsed">Manuel
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+									         <div class="panel-body">
+									            <div class="row">
+										      		<div class="col-md-6">
+										      			<p>Aqui va la info de Manuel </p>
+																<p>email</p>
+																<p>phone</p>
+										      		</div>
+										      		<div class="col-md-6">
+										      			<p>Se divide en 2 columnas</p>
+																<p>age</p>
+																<p>company</p>
+										      		</div>
+										      	</div>
+									         </div>
+									    </div>
+									</div>
 
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingFive">
+									        <h4 class="panel-title">
+									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">Manuel
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+									         <div class="panel-body">
+									            <div class="row">
+										      		<div class="col-md-6">
+										      			<p>Aqui va la info de Manuel </p>
+																<p>email</p>
+																<p>phone</p>
+										      		</div>
+										      		<div class="col-md-6">
+										      			<p>Se divide en 2 columnas</p>
+																<p>age</p>
+																<p>company</p>
+										      		</div>
+										      	</div>
+									         </div>
+									    </div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -164,28 +247,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										</div>
 									</form>
 								</div>
-							</div>
-							{% for i in searched %}
 
-							<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="headingOne">
-											<h4 class="panel-title">
-													<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ i.nombre }}
-													</a>
-											</h4>
-									</div>
-									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-											 <div class="panel-body">
-													<div class="row">
-													<div class="col-md-6">
-														<p>fillDetails({{ i|tojson }})></p>
-													</div>
-												</div>
-											 </div>
-									</div>
 							</div>
-
-							{% endfor %}
 						</div>
 					</div>
 				</div>
@@ -196,23 +259,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</div><!-- end:colorlib-page -->
 
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<script src="static/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="static/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="static/js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="static/js/jquery.flexslider-min.js"></script>
 	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="static/js/owl.carousel.min.js"></script>
 	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
+	<script src="static/js/jquery.countTo.js"></script>
 
 
 	<!-- MAIN JS -->
-	<script src="js/main2.js"></script>
+	<script src="static/js/main2.js"></script>
 
 	</body>
 </html>
