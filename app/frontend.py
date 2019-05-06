@@ -67,7 +67,7 @@ def registro():
         print("agap",password)
 
         id = id + 1
-        a.insert_user(id,email,name,company,age,phone)
+        #a.insert_user(id,email,name,company,age,phone)
 
         return redirect(url_for('login'))
 
