@@ -1,11 +1,11 @@
 # TC3041 Proyecto  Final Primavera 2019
 
-#*[Poner aquí el Título del Proyecto]*
+#LinkedOut
 ---
 
 ##### Integrantes:
-1. *[Poner aquí Nombre y Apellidos del integrante 1]*
-2. *[Poner aquí Nombre y Apellidos del integrante 2]*
+1. Manuel Guadarrama
+2. Pablo Teran
 
 
 ---
@@ -33,7 +33,7 @@ El proyecto debe seguir la siguiente estructura de carpetas:
     - api			# Carpeta con la solución de la API
     - datasets		        # Carpeta con los datasets y recursos utilizados (csv, json, audio, videos, entre otros)
     - dbs			# Carpeta con los modelos, catálogos y scripts necesarios para generar las bases de datos
-    - models			# Carpeta donde se almacenarán los modelos de Machine Learning ya entrenados 
+    - models			# Carpeta donde se almacenarán los modelos de Machine Learning ya entrenados
     - docs			# Carpeta con la documentación del proyecto
         - stage_f               # Documentos de la entrega final
         - manuals               # Manuales y guías
@@ -46,7 +46,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 * Justificación de los modelo de *bases de datos* que seleccionaron.
 * Descripción del o los *datasets* y las fuentes de información utilizadas.
 * Guía de configuración, instalación y despliegue de la solución en la plataforma en la nube  seleccionada.
-* Documentación de la API. Puede ver un ejemplo en [Swagger](https://swagger.io/). 
+* Documentación de la API. Puede ver un ejemplo en [Swagger](https://swagger.io/).
 * El código debe estar documentado siguiendo los estándares definidos para el lenguaje de programación seleccionado.
 
 ## 2. Descripción del proyecto
@@ -97,7 +97,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 * **URL**:
 * **Verbos HTTP**:
 * **Headers**:
-* **Formato JSON del cuerpo de la solicitud**: 
+* **Formato JSON del cuerpo de la solicitud**:
 * **Formato JSON de la respuesta**:
 
 
