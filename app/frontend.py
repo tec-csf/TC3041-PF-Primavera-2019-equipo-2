@@ -25,18 +25,18 @@ def test():
 def login():
 
     p = persons.Persons()
+
     if request.method == 'POST':
 
-        user = request.form.get('name')
+        user = request.form.get('username')
 
         password = request.form.get('pass')
 
         #if(a.verify_password(user,password)):
             # user['_id'] = user
 
-        cursor = p.findFriends(1)#(user)
-        knows = list(cursor)
-        return render_template("index.html",knows=knows)
+
+        return redirect(url_for('index'))
         #else:
             #print("wrong")
 
@@ -45,16 +45,19 @@ def login():
 @app.route('/index', methods=['POST','GET'])
 def index():
     p = persons.Persons()
-
+    cursor = p.findNames(1)#(user)
+    knows = p.findFriends(1)#(user)
+    #print("knows",knows[0]['name'])
     if request.method == 'POST':
 
         search = request.form.get('search')
         print("agap", search)
 
-        cursor = findWhere(search)
+        cursor = p.findWhere(search)
         searched = list(cursor)
+        print("searched", searched)
 
-        return render_template("index.html",searched=searched)
+        return render_template("index.html",searched=searched,knows=knows,nombre=cursor)
 
     return render_template("index.html")
 

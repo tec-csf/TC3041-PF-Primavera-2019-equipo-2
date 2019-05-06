@@ -49,6 +49,9 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+
+
+
 	</head>
 	<body>
 	<div id="colorlib-page">
@@ -93,10 +96,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 							<div class="fancy-collapse-panel">
 								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+									{%for i in knows%}
 									<div class="panel panel-default">
 									    <div class="panel-heading" role="tab" id="headingOne">
 									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Manuel
+									            <a  data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">Conocido
 									            </a>
 									        </h4>
 									    </div>
@@ -104,117 +109,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									         <div class="panel-body">
 									            <div class="row">
 										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingTwo">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria- rols="collapseTwo" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingThree">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
+										      			<p>{{i}} </p>
 										      		</div>
 										      	</div>
 									         </div>
 									    </div>
 									</div>
 
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingFour">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
+									{%endfor%}
 
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingFive">
-									        <h4 class="panel-title">
-									            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">Manuel
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-									         <div class="panel-body">
-									            <div class="row">
-										      		<div class="col-md-6">
-										      			<p>Aqui va la info de Manuel </p>
-																<p>email</p>
-																<p>phone</p>
-										      		</div>
-										      		<div class="col-md-6">
-										      			<p>Se divide en 2 columnas</p>
-																<p>age</p>
-																<p>company</p>
-										      		</div>
-										      	</div>
-									         </div>
-									    </div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -231,28 +134,48 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 							<h2 class="colorlib-heading">Add Someone</h2>
 						</div>
 					</div>
+					<form method="POST">
 					<div class="row">
 						<div class="col-md-5">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Name">
+								<input type="text" class="form-control" placeholder="Name" name="search">
 							</div>
 						</div>
 						<div class="col-md-7 col-md-push-1">
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
-									<form action="">
 
 										<div class="form-group">
-											<input type="submit" class="btn btn-primary btn-send-message" value="Search">
+											<input type="submit" class="btn btn-primary btn-send-message" value="search" >
 										</div>
-									</form>
 								</div>
 
 							</div>
 						</div>
 					</div>
+				</form>
+				{%for i in searched%}
+						<div class="panel-heading" role="tab" id="headingOne">
+								<h4 class="panel-title">
+										<a  data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">Resultado
+										</a>
+								</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								 <div class="panel-body">
+										<div class="row">
+										<div class="col-md-6">
+											<p>{{i}} </p>
+										</div>
+									</div>
+								 </div>
+						</div>
+
+				{%endfor%}
 				</div>
 			</section>
+
+
 
 		</div><!-- end:colorlib-main -->
 	</div><!-- end:container-wrap -->

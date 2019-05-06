@@ -20,14 +20,9 @@ class Persons(object):
         """
         Obtener todos
         """
-        cursor = self.collection.find()
 
         usuarios = []
 
-        for usuario in cursor:
-            # Se adicionó para poder manejar ObjectID
-            usuario['_id'] = str(usuario['_id'])
-            usuarios.append(usuario)
 
         return usuarios
 
@@ -66,4 +61,21 @@ class Persons(object):
                 temp2 = temp[i]
                 result3 = list(self.collection.find({"_id":int(temp2)}))
                 k.append(result3)
+
+        return k
+
+    def findNames(self, name):
+        """
+        Despliega a tus conocidos
+        """
+        cursor = self.collection.distinct("knows", {"_id":name})
+        result2 = list(cursor)
+        temp = result2[0]
+        k = []
+        for i in range(len(temp)):
+            if i%2 == 1:
+                temp2 = temp[i]
+                result3 = list(self.collection.distinct("name",{"_id":int(temp2)}))
+                k.append(result3)
+
         return k
