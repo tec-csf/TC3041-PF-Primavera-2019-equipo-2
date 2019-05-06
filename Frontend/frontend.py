@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,request,make_response,redirect,url_for,render_template, session
 from flask_bootstrap import Bootstrap
-from backend import api
+from Backend import api
 import jinja2
 import os
 env = jinja2.Environment()
