@@ -1,5 +1,6 @@
 import redis
 import config
+import hashlib, uuid
 
 class Sessions(object):
 
@@ -14,6 +15,21 @@ class Sessions(object):
                 host= config.REDIS_HOST,
                 port=config.REDIS_PORT)
 
+    def hashed_pass(self,password):
+        """ Hash Pass """
+        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+        return hashed_password
+
+    def set_user(self,user,password):
+
+        self.instance.hset(user,"password",Sessions.hashed_pass(self,password))
+
+    def get_user_password(self,user):
+
+        password=self.instance.hget(user,"password")
+
+        return password
 
     def get_active_sessions(self):
         """ Regresa las sesiones activas en Redis """

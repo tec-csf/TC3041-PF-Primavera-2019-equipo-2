@@ -1,7 +1,11 @@
 from pymongo import MongoClient
 from bson import ObjectId
 from flask import request, url_for, jsonify
+from flask_wtf import Form
+from wtforms import StringField,PasswordField
+from wtforms.validators import InputRequired, Email,Length,AnyOf
 import config
+from models import sessions
 
 class Persons(object):
 
@@ -79,3 +83,33 @@ class Persons(object):
                 k.append(result3)
 
         return k
+
+class LoginForm(Form):
+    username = StringField('username', validators=[InputRequired(),Email(message='Invalid email.')])
+    password = PasswordField('password', validators=[InputRequired(),Length(min=5,max=15)])
+
+class API(object):
+
+    def update_user(self,user,password):
+        red = sessions.Sessions()
+        red.set_user(user,password)
+
+
+
+    def verify_password(self,user,password):
+        red = sessions.Sessions()
+
+        hashedPassword = red.hashed_pass(password)
+
+        redisPassword = red.get_user_password(user)
+
+        if(redisPassword != None):
+            if redisPassword.decode() == hashedPassword:
+              return True
+            return False
+        return False
+
+    def insert_user(self,user,password):
+         red = sessions.Sessions()
+
+         red.set_user(user,password)
