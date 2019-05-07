@@ -67,6 +67,14 @@ def index():
 
         return render_template("index.html",searched=searched,knows=knows,ID=ID,me=me)
 
+    if request.method == 'GET':
+
+        add = request.form.get('added')
+        p.addNew(add)
+        knows = p.findFriends(ID[0])
+
+        return render_template("index.html",knows=knows,ID=ID,me=me)
+
     return render_template("index.html",knows=knows,ID=ID,me=me)
 
 @app.route('/register', methods=['POST','GET'])

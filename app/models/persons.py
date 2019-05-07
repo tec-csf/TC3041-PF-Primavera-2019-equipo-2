@@ -119,6 +119,23 @@ class Persons(object):
         k.append(result)
         return k
 
+    def addNew(self, id):
+        """
+        Despliega mi info
+        """
+
+        k = []
+        cursor = self.collection.distinct("name",{"_id":id})
+        result = list(cursor)
+        k.append(result)
+        cursor = self.collection.distinct("company",{"_id":id})
+        result = list(cursor)
+        k.append(result)
+        cursor = self.collection.distinct("email",{"_id":id})
+        result = list(cursor)
+        k.append(result)
+        return k
+
 class LoginForm(Form):
     username = StringField('username', validators=[InputRequired(),Email(message='Invalid email.')])
     password = PasswordField('password', validators=[InputRequired(),Length(min=5,max=15)])
