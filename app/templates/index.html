@@ -60,8 +60,9 @@
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
 			<div class="text-center">
 				<div class="author-img" style="background-image: url(static/images/bg-01.jpg);"></div>
-				<h1 id="colorlib-logo"><a href="index.html">Pablo Teran</a></h1>
-				<span class="position">Aqui va toda la informacion</span>
+				<h1 id="colorlib-logo"><a href="#" data-nav-section="friends">{{me[0]}}</a></h1>
+				<span class="position">{{me[1]}}</span>
+				<span class="position">{{me[2]}}</span>
 			</div>
 			<nav id="colorlib-main-menu" role="navigation" class="navbar">
 				<div id="navbar" class="collapse">
@@ -96,12 +97,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 							<div class="fancy-collapse-panel">
 								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-									{%set n = nombre%}
+
 									{%for i in knows%}
+
 									<div class="panel panel-default">
 									    <div class="panel-heading" role="tab" id="headingOne">
 									        <h4 class="panel-title">
-									            <a  data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">{{n}}
+									            <a  data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne">{{i[0]}}
 									            </a>
 									        </h4>
 									    </div>
@@ -109,7 +111,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									         <div class="panel-body">
 									            <div class="row">
 										      		<div class="col-md-6">
-										      			<p>{{i}} </p>
+																<p>{{i[1]}}</p>
+																<p>{{i[2]}}</p>
 										      		</div>
 										      	</div>
 									         </div>

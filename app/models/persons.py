@@ -59,14 +59,23 @@ class Persons(object):
         cursor = self.collection.distinct("knows", {"_id":name})
         result2 = list(cursor)
         temp = result2[0]
-        k = []
+        k2 = []
         for i in range(len(temp)):
             if i%2 == 1:
-                temp2 = temp[i]
-                result3 = list(self.collection.find({"_id":int(temp2)}))
-                k.append(result3)
+                temp2 = int(temp[i])
+                k =[]
+                cursor = self.collection.distinct("name",{"_id":temp2})
+                result = list(cursor)
+                k.append(result)
+                cursor = self.collection.distinct("company",{"_id":temp2})
+                result = list(cursor)
+                k.append(result)
+                cursor = self.collection.distinct("email",{"_id":temp2})
+                result = list(cursor)
+                k.append(result)
+                k2.append(k)
 
-        return k
+        return k2
 
     def findNames(self, name):
         """
@@ -82,6 +91,32 @@ class Persons(object):
                 result3 = list(self.collection.distinct("name",{"_id":int(temp2)}))
                 k.append(result3)
 
+        return k
+
+    def findID(self, name):
+        """
+        Despliega mi id
+        """
+        cursor = self.collection.distinct("_id", {"email":name})
+        result2 = list(cursor)
+
+        return result2
+
+    def findME(self, id):
+        """
+        Despliega mi info
+        """
+
+        k = []
+        cursor = self.collection.distinct("name",{"_id":id})
+        result = list(cursor)
+        k.append(result)
+        cursor = self.collection.distinct("company",{"_id":id})
+        result = list(cursor)
+        k.append(result)
+        cursor = self.collection.distinct("email",{"_id":id})
+        result = list(cursor)
+        k.append(result)
         return k
 
 class LoginForm(Form):
