@@ -55,7 +55,7 @@ def login():
 @app.route('/index', methods=['POST','GET'])
 def index():
     p = persons.Persons()
-    names = p.findNames(ID[0])
+    #names = p.findNames(ID[0])
     knows = p.findFriends(ID[0])
     me = p.findME(ID[0])
     if request.method == 'POST':
@@ -65,9 +65,9 @@ def index():
         searched = list(cursor)
 
 
-        return render_template("index.html",searched=searched,knows=knows,nombre=names,ID=ID,me=me)
+        return render_template("index.html",searched=searched,knows=knows,ID=ID,me=me)
 
-    return render_template("index.html",knows=knows,nombre=names,ID=ID,me=me)
+    return render_template("index.html",knows=knows,ID=ID,me=me)
 
 @app.route('/register', methods=['POST','GET'])
 def registro():

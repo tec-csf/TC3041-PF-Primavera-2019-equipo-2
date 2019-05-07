@@ -45,7 +45,7 @@ class Persons(object):
         Buscar personas que tengan la letra K en su nombre
         """
         where = "{}".format(name)
-        pipe = [{"$match":{"name":{ "$regex": where }}}]
+        pipe = [{"$match":{"name":{ "$regex": where }}},{"$project":{"_id":0,"name":1,"email":1,"company":1}}]
 
         cursor = self.collection.aggregate(pipe)
         result = list(cursor)

@@ -7,3 +7,4 @@ Jinja2==2.10
 python-dotenv
 flask-bootstrap
 flask_wtf
+json
