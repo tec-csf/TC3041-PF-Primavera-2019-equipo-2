@@ -1,6 +1,5 @@
 from flask import Flask,jsonify,request,make_response,redirect,url_for,render_template, session
 from flask_bootstrap import Bootstrap
-from backend.models import sessions
 from backend import persons
 from pymongo import MongoClient
 from flask_api import FlaskAPI, status, exceptions

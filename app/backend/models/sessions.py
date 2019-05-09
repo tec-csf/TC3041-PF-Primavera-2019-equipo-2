@@ -1,5 +1,5 @@
 import redis
-from . import config
+from backend import config
 import hashlib, uuid
 
 class Sessions(object):

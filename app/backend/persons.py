@@ -4,7 +4,8 @@ from flask import request, url_for, jsonify
 from flask_wtf import Form
 from wtforms import StringField,PasswordField
 from wtforms.validators import InputRequired, Email,Length,AnyOf
-from .models import sessions, config
+from .models import sessions
+from . import config
 
 class Persons(object):
 
