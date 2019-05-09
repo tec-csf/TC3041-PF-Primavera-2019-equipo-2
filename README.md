@@ -78,8 +78,8 @@ En cuanto a MongoDB, se utilizó porque no se tiene que definir los atributos qu
 ### 3.4 Backend
 
 El Backend consiste de las dos bases de datos, una en MongoDB y la otra en Redis.
-1. MongoDB por la facilidad de guardar los atributos y crear nuevos de ser necesarios, no se necesita definir todo al inicio. Se pueden insertar nuevos campos o "documentos" de acuerdo a lo que se necesite en el sitio web.
-2.- Redis por ser llave valor se guardan los dos datos del login del usuario y es fácil comprobar y autenticar las sesiones.
+-   MongoDB por la facilidad de guardar los atributos y crear nuevos de ser necesarios, no se necesita definir todo al inicio. Se pueden insertar nuevos campos o "documentos" de acuerdo a lo que se necesite en el sitio web.
+-   Redis por ser llave valor se guardan los dos datos del login del usuario y es fácil comprobar y autenticar las sesiones.
 
 #### 3.4.1 Lenguaje de programación
 Se utilizó Python para lograr la comunicación con las bases de datos.
