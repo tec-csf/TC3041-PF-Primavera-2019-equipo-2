@@ -92,23 +92,30 @@ Se utilizó Python para lograr la comunicación con las bases de datos.
 
 ### 3.5 API
 
-*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+Para la comunicación entre Backend y el Frontend se utilizó el framework Flask en conjunto con Python, dependiendo de a que parte de la aplicación accedía (login, register, index) se realizaban diferentes queries para obtener y desplegar la información, de ser necesario también se puede modificar la información como es el caso de registrar un nuevo usuario.
 
 #### 3.5.1 Lenguaje de programación
+Se utilizó Python para el API de la aplicación web. 
+-   Referencia: https://docs.python.org/3/
 #### 3.5.2 Framework
+Flask
+-   Referencia: http://flask.pocoo.org/
 #### 3.5.3 Librerías de funciones o dependencias
+ENTRY POINT: "/"
+* **Descripción**: la página principal de nuestro sitio web es la del login del usuario por lo que al lanzar la aplicación se despliega el template de login.html
+* **URL**: "/"
 
-*[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
+END POINT: "/login"
+* **Descripción**: pide al usuario un username y password válido para acceder al sitio web completo en dónde se despliega tu información y están las otras funciones. Si se llena correctamente, es decir, si se autentifica al usuario damos paso a la pantalla de index.html
+* **URL**: "/login"
 
-*[Por cada endpoint debe incluir lo siguiente:]*
+END POINT: "/register"
+* **Descripción**: si no se tiene una cuenta válida se le pide al usuario dar los datos necesarios para darlo de alta en la base de datos MongoDB y otorgarle acceso al sitio web
+* **URL**: "/register"
 
-* **Descripción**:
-* **URL**:
-* **Verbos HTTP**:
-* **Headers**:
-* **Formato JSON del cuerpo de la solicitud**:
-* **Formato JSON de la respuesta**:
-
+END POINT: "/index"
+* **Descripción**: muestra al usuario su información y el de las personas que conoce al igual que ofrece la opción de buscar nuevas personas que también son usuarios de la aplicación
+* **URL**: "/index"
 
 ## 3.6 Pasos a seguir para utilizar el proyecto
 
