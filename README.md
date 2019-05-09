@@ -51,7 +51,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-*[Incluya aquí la descripción del proyecto seleccionado.]*
+El proyecto consiste en una aplicación web que obtiene y modifica información de una base de datos MongoDB para desplegar un sitio en dónde puedes ver tu información al igual que la de tus conocidos; este sitio ofrece un sistema de búsqueda en el que puedes encontrar a más de tus conocidos y ver su información básica permitiendo que conectes con más usuarios.
 
 ## 3. Solución
 
@@ -59,7 +59,9 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Modelos de *bases de datos* utilizados
 
-*[Incluya aquí una explicación del análisis realizado y la justificación de los modelos de *bases de datos* seleccionados. Incluya todo lo que considere necesario para que una persona sin conocimientos técnicos pueda entender de que trata su solución.]*
+Se utilizó una Redis para el manejo o control de sesiones por su facilidad ya que al ser una base de datoa llave valor podemos guardar los dos datos importantes que son el usuario y la contraseña sin problemas y acceder a ellos rápidamente.
+
+En cuanto a MongoDB, se utilizó porque no se tiene que definir los atributos que va a tener la basea de datos haciendo que se puedan agregar de ser necesario nuevos campos para los usuarios. También se utilizó por su compatibilidad con Python (Pymongo) ya que facilitó las consultas y actualizaciones a la base de datos desde el sitio web.
 
 ### 3.2 Arquitectura de la solución
 
@@ -75,11 +77,18 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.4 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+El Backend consiste de las dos bases de datos, una en MongoDB y la otra en Redis.
+1. MongoDB por la facilidad de guardar los atributos y crear nuevos de ser necesarios, no se necesita definir todo al inicio. Se pueden insertar nuevos campos o "documentos" de acuerdo a lo que se necesite en el sitio web.
+2.- Redis por ser llave valor se guardan los dos datos del login del usuario y es fácil comprobar y autenticar las sesiones.
 
 #### 3.4.1 Lenguaje de programación
+Se utilizó Python para lograr la comunicación con las bases de datos.
 #### 3.4.2 Framework
+1. MongoDB
+2. Redis
 #### 3.4.3 Librerías de funciones o dependencias
+1. Redis
+2. MongoClient:Pymongo
 
 ### 3.5 API
 
