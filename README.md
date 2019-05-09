@@ -64,20 +64,25 @@ Se utilizó una Redis para el manejo o control de sesiones por su facilidad ya q
 En cuanto a MongoDB, se utilizó porque no se tiene que definir los atributos que va a tener la basea de datos haciendo que se puedan agregar de ser necesario nuevos campos para los usuarios. También se utilizó por su compatibilidad con Python (Pymongo) ya que facilitó las consultas y actualizaciones a la base de datos desde el sitio web.
 
 ### 3.2 Arquitectura de la solución
-
-*[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
+![](LinkedOut.png)
 
 ### 3.3 Frontend
-
-*[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+El frontend consiste en archivos HTML donde se utiliza CSS, JS y Bootstrap. Los archivos fueron descargados como una plantilla y modificados para que hagan exactamente lo que queremos en este proyecto. El uso de plantillas permite ahorrar tiempo y enfocar mas recursos en la creacion de backnd.
 
 #### 3.3.1 Lenguaje de programación
+Se utlizo HTML y JavaScript en los archivos .html.
+
 #### 3.3.2 Framework
+El framework utilizado fue [Flask](http://flask.pocoo.org/docs/1.0/). Flask hace la coneccion con el back end y con los archivos html.
+
 #### 3.3.3 Librerías de funciones o dependencias
+1.Flask
+2.Bootstrap
+
 
 ### 3.4 Backend
 
-El Backend consiste de las dos bases de datos, una en MongoDB y la otra en Redis.
+El backend consiste de las dos bases de datos, una en MongoDB y la otra en Redis.
 -   MongoDB por la facilidad de guardar los atributos y crear nuevos de ser necesarios, no se necesita definir todo al inicio. Se pueden insertar nuevos campos o "documentos" de acuerdo a lo que se necesite en el sitio web.
 -   Redis por ser llave valor se guardan los dos datos del login del usuario y es fácil comprobar y autenticar las sesiones.
 
@@ -95,11 +100,11 @@ Se utilizó Python para lograr la comunicación con las bases de datos.
 Para la comunicación entre Backend y el Frontend se utilizó el framework Flask en conjunto con Python, dependiendo de a que parte de la aplicación accedía (login, register, index) se realizaban diferentes queries para obtener y desplegar la información, de ser necesario también se puede modificar la información como es el caso de registrar un nuevo usuario.
 
 #### 3.5.1 Lenguaje de programación
-Se utilizó Python para el API de la aplicación web. 
--   Referencia: https://docs.python.org/3/
+Se utilizó [Python](https://docs.python.org/3/) para el API de la aplicación web. 
+
 #### 3.5.2 Framework
-Flask
--   Referencia: http://flask.pocoo.org/
+[Flask](http://flask.pocoo.org/)
+
 #### 3.5.3 Librerías de funciones o dependencias
 ENTRY POINT: "/"
 * **Descripción**: la página principal de nuestro sitio web es la del login del usuario por lo que al lanzar la aplicación se despliega el template de login.html
@@ -119,8 +124,73 @@ END POINT: "/index"
 
 ## 3.6 Pasos a seguir para utilizar el proyecto
 
-*[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación del repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
+# Ejecución en Google Cloud Platform
+1.Cree un proyecto en la Consola de Google Cloud Platform. Póngale el nombre y ID que usted prefiera.
+
+2. Dentro del menu de GCP seleccione la opción Kubernetes Engine / Clústeres de Kubernetes y cree un nuevo clúster dentro del proyecto creado en el paso anterior.
+
+3. Cambie el nombre nombre del clúster y el tamaño del clúster a 1 nodo. Los demás valores déjelos como aparecen de manera predeterminada.
+
+4. Una vez creado el clúster, seleccione la opción "Conectar" y en la ventana que aparece, seleccione el primer comando relacionado. El comando a copiar tiene una estructura similar a la siguiente:
+
+`gcloud container clusters get-credentials demo-web --zone us-central1-a --project  <PROJECT ID>`
+
+5. Ejecute el comando anterior en el Cloud Shell.
+
+6. Descargue el repositorio utilizando el comando git clone:
+
+`git clone https://github.com/tec-csf/TC3041-PF-Primavera-2019-equipo-2.git`
+
+2. Cámbiese a la carpeta del proyecto.
+
+`cd app/`
+
+8. Compile la imagen del contenedor de la aplicación, sustituyendo <PROJECT ID> por el que le correponde.:
+
+`docker build -t gcr.io/<PROJECT ID>/flask-api app/.`
+
+9. Suba la imagen del contendor al registro de su proyecto en Google Cloud Platform:
+`gcloud docker -- push gcr.io/<PROJECT ID>/flask-api`
+
+10. Verifique que dentro del archivo deploy.yaml tenga la imagen con el mismo nombre al paso anterior
+
+10. Despliegue la aplicación en Google Cloud Platform:
+`kubectl create -f deploy.yaml`
+
+11. Verifique que los servicios se encuentran funcionando correctamente:
+`kubectl get deployment`
+
+` kubectl get service`
+
+` kubectl get pod`
+
+12. Obtenga la URL del servicio. Ejecute el comando:
+
+`kubectl get service`
+
+13. Acceda a la aplicación en un browser con la IP externa obtenida en el paso anterior.
+
+14. Para eliminar la aplicación y los servicios creados ejecute:
+
+`kubectl delete -f deploy.yaml`
+
+15. Elimine el clúster desde la Consola de [Google Cloud Platform](https://cloud.google.com/).
 
 ## 4. Referencias
+-[Jinja](http://jinja.pocoo.org/docs/2.10/)
 
-*[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
+-[RedisLabs](https://docs.redislabs.com/latest/index.html)
+
+-[MongoDB](https://www.mongodb.com/)
+
+-[Flask](http://flask.pocoo.org/docs/1.0/)
+
+-[Flask-WTF](https://flask-wtf.readthedocs.io/en/stable/)
+
+-[Flask-Bootstrap](https://pythonhosted.org/Flask-Bootstrap/)
+
+-[Python3](https://docs.python.org/3/)
+
+-[HTML](https://devdocs.io/html/)
+
+-[Google Cloud Platform](https://cloud.google.com/)
